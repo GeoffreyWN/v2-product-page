@@ -1,40 +1,44 @@
 import React from 'react'
 import classes from './ProductDetails.module.css'
-import ProductData from './utils/ProductData'
 
-const ProductDetails = () => {
+const ProductDetails = ({ data }) => {
+
+  const colorOptions = data.colorOptions.map((item, pos) => {
+    const classArr = [classes.ProductImage]
+    if (pos === 0) {
+      classArr.push(classes.SelectedProductImage)
+    }
     return (
-        
-            <div className={classes.ProductData}>
-          <h1 className={classes.ProductTitle}>{ProductData.title}</h1>
-          <p className={classes.ProductDesc}>{ProductData.description}</p>
-          <h3 className={classes.SectionHeading}> Select Color</h3>
-          <div>
-            <img
-              src="https://imgur.com/xSIK4M8.png"
-              alt=""
-              className={[
-                classes.ProductImage,
-                classes.SelectedProductImage,
-              ].join(" ")}
-            />
-          </div>
-
-          <h3 className={classes.SectionHeading}> Features</h3>
-          <div>
-            <button
-              className={[
-                classes.FeatureItem,
-                classes.SelectedFeatureItem,
-              ].join(" ")}
-            >
-              Time
-            </button>
-            <button className={classes.FeatureItem}>Heart Rate</button>
-          </div>
-          <button className={classes.PrimaryButton}>buy Now</button>
-        </div>
+      <img key={pos} src={item.imageUrl} alt={item.styleName} className={classArr.join(' ')} />
     )
+  })
+
+  const featureList = data.featureList.map((item, pos) => {
+    const classArr = [classes.FeatureItem]
+    if (pos === 0) {
+      classArr.push(classes.SelectedFeatureItem)
+    }
+    return (
+      <button key={pos} className={classArr.join(" ")} > {item} </button>
+    )
+  })
+  return (
+
+    <div className={classes.ProductData}>
+      <h1 className={classes.ProductTitle}>{data.title}</h1>
+      <p className={classes.ProductDesc}>{data.description}</p>
+      <h3 className={classes.SectionHeading}> Select Color</h3>
+      <div>
+        {colorOptions}
+      </div>
+
+      <h3 className={classes.SectionHeading}> Features</h3>
+      <div>
+        {featureList}
+      </div>
+      <button className={classes.PrimaryButton}>buy Now</button>
+    </div>
+  )
 }
 
 export default ProductDetails
