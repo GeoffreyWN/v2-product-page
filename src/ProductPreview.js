@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ProductPreview.module.css";
 
-const ProductPreview = ({ currentPreviewImage, showHeartBeatSection }) => {
+const ProductPreview = ({ currentPreviewImage, currentSelectedFeature }) => {
   const currentHour =
     new Date().getHours() > 9
       ? new Date().getHours()
@@ -14,9 +14,9 @@ const ProductPreview = ({ currentPreviewImage, showHeartBeatSection }) => {
     <div className={classes.ProductPreview}>
       <img src={currentPreviewImage} alt="Product Preview" />
 
-      { showHeartBeatSection ? (
+      { currentSelectedFeature === 1 ? (
         <div className={classes.HeartBeatSection}>
-          <i class="fas fa-heartbeat"></i>
+          <i className="fas fa-heartbeat"></i>
           <p>82</p>
         </div>
       ) : (

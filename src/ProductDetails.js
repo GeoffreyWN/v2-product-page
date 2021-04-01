@@ -1,25 +1,25 @@
 import React from 'react'
 import classes from './ProductDetails.module.css'
 
-const ProductDetails = ({ data }) => {
+const ProductDetails = ({ data, onColorOptionClick, currentPreviewImagePos, onFeatureItemClick, currentSelectedFeature }) => {
 
   const colorOptions = data.colorOptions.map((item, pos) => {
     const classArr = [classes.ProductImage]
-    if (pos === 0) {
+    if (pos === currentPreviewImagePos) {
       classArr.push(classes.SelectedProductImage)
     }
     return (
-      <img key={pos} src={item.imageUrl} alt={item.styleName} className={classArr.join(' ')} />
+      <img key={pos} src={item.imageUrl} alt={item.styleName} className={classArr.join(' ')} onClick={() => onColorOptionClick(pos)} />
     )
   })
 
   const featureList = data.featureList.map((item, pos) => {
     const classArr = [classes.FeatureItem]
-    if (pos === 0) {
+    if (pos === currentSelectedFeature) {
       classArr.push(classes.SelectedFeatureItem)
     }
     return (
-      <button key={pos} className={classArr.join(" ")} > {item} </button>
+      <button onClick={() => onFeatureItemClick(pos)} key={pos} className={classArr.join(" ")} > {item} </button>
     )
   })
   return (
