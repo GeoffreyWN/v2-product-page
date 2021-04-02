@@ -36,7 +36,7 @@ const ProductDetails = ({ data, onColorOptionClick, currentPreviewImagePos, onFe
       <div>
         {featureList}
       </div>
-      <button className={classes.PrimaryButton}>buy Now</button>
+      <button className={classes.PrimaryButton}>Buy Now</button>
     </div>
   )
 }
