@@ -6,7 +6,7 @@ const TopBar = () => {
         <header>
             <nav className={classes.Topbar}>
                 <img
-                    src="https://i.dlpng.com/static/png/197684_preview.png"
+                     src="http://pngimg.com/uploads/amazon/amazon_PNG25.png"
                     alt="logo"
                 />
             </nav>
